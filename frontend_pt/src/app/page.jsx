@@ -23,7 +23,7 @@ export default function Home() {
     axios.get('https://localhost:7151/Empleados/Obtener').then(res => {
       setempleados(res.data)
       setempleadosfiltro(res.data)
-    })
+    }).catch(err=>console.log(err))
 
   }
 
@@ -78,56 +78,55 @@ export default function Home() {
 
 
   return (
-    <div className='main'>
-        <Header/>
+<div className='main'>
+          <Header/>
         
       
-       
-      
-      <div className='portada'>
-        <div className='input_filtros'>
+  <div className='portada'>
+     <div className='input_filtros'>
           <h3>Filtros: </h3>
           <input value={txtfiltronombre}  placeholder='Nombre' type='text' onChange={buscador_nombre} />
           <input value={txtfiltrodocumento} placeholder='#Documento' onChange={buscador_documento} type='text'/>
           
-        </div>
-        
-     <div className='tabla'>
-     
-      <tr className='titulo'>
-        <td>Nombre</td>
-        <td>Apellido</td>
-        <td>Tipo de Documento</td>
-        <td>Documento</td>
-        <td>Fecha</td>
-        <td>Pais</td>
-        <td>Area</td>
-        <td>Sub-area</td>
-        <td>Acciones</td>
-      </tr>
-      { 
-      results.map(empleado => {
-         
-         return(
-      <tr>
-        <td>{results?empleado.nombre:" "}</td>
-        <td>{results?empleado.apellido:" "}</td>
-        <td>{results?empleado.tipo_documento:" "}</td>
-        <td>{results?empleado.num_documento:" "}</td>
-        <td>{results?empleado.contratacion:" "}</td>
-        <td>{results?empleado.pais:" "}</td>
-        <td>{results?empleado.area:" "}</td>
-        <td>{results?empleado.subarea:" "}</td>
-        <td><div className='cell_acciones'><a className='btn_eliminar' onClick={()=>{EliminarEmpleado(empleado.num_documento),setestadoeliminacion(!estadoeliminacion)}}>Eliminar</a><a onClick={() => handleabrirmodal(empleado)} className='btn_editar'>Editar</a></div></td>
-      </tr>
-      )
-      })}
-     </div>
-     
+          </div>
 
-     <Modal estado={estadomodal} cambiarestado={setestadomodal} empleado_editar={empleado_a_editar}/>
-      </div>
+          <table className='tabla'>
+            <tbody>
+            <tr className='titulo'>
+              <td>Nombre</td>
+              <td>Apellido</td>
+              <td>Tipo de Documento</td>
+              <td>Documento</td>
+              <td>Fecha</td>
+              <td>Pais</td>
+              <td>Area</td>
+              <td>Sub-area</td>
+              <td>Acciones</td>
+            </tr>
+            { 
+            results.map(empleado => {
+            
+               return(
+            <tr>
+              <td>{empleado.nombre}</td>
+              <td>{empleado.apellido}</td>
+              <td>{empleado.tipo_documento}</td>
+              <td>{empleado.num_documento}</td>
+              <td>{empleado.contratacion}</td>
+              <td>{empleado.pais}</td>
+              <td>{empleado.area}</td>
+              <td>{empleado.subarea}</td>
+              <td><div className='cell_acciones'><a className='btn_eliminar' onClick={()=>{EliminarEmpleado(empleado.num_documento),setestadoeliminacion(!estadoeliminacion)}}>Eliminar</a><a onClick={() => handleabrirmodal(empleado)} className='btn_editar'>Editar</a></div></td>
+            </tr>
+        )
+        })}
+        </tbody>
+        </table>
+      
+
+        <Modal estado={estadomodal} cambiarestado={setestadomodal} empleado_editar={empleado_a_editar}/>
+  </div>
      
-    </div>
+</div>
   )
 }
