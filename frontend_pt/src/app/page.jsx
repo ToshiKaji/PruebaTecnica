@@ -66,11 +66,13 @@ export default function Home() {
     setestadomodal(!estadomodal)
     setempleado_a_editar(empleado)
    }
- 
+
+
 
   useEffect(() => {
 
     ObtenerEmpleados();
+   
     
   },[estadomodal],[estadoeliminacion])
 
@@ -87,7 +89,6 @@ export default function Home() {
           <h3>Filtros: </h3>
           <input value={txtfiltronombre}  placeholder='Nombre' type='text' onChange={buscador_nombre} />
           <input value={txtfiltrodocumento} placeholder='#Documento' onChange={buscador_documento} type='text'/>
-          
           </div>
 
           <table className='tabla'>

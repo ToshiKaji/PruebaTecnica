@@ -86,12 +86,12 @@ const Agregarregistros = () => {
         <div className='registros'>
             <h1>Crear registro</h1>
 
-            <div className='formulario'>
-                <h2>Nombre</h2>
+            <div className='formularioregistrar'>
+                <h3>Nombre</h3>
                 <input placeholder='Nombre' type='text' onChange={inf=>setnombre(inf.target.value)}/>
-                <h2>Apellido</h2>
+                <h3>Apellido</h3>
                 <input placeholder='Apellido' type='text'onChange={inf=>setapellido(inf.target.value)}/>
-                <h2>Pais</h2>
+                <h3>Pais</h3>
                 <select defaultValue='true' onChange={inf=>setpais(inf.target.value)}>
                     {paises.map(pais=>{
                         return(
@@ -99,24 +99,24 @@ const Agregarregistros = () => {
                         
                     )})}
                 </select>
-                <h2>Area</h2>
+                <h3>Area</h3>
                 <select defaultValue='true' onChange={inf=>setarea(inf.target.value)}>
                     {areas.map(area=>{return(
                         <option value={area.id_area}>{area.nombre_area}</option>
                     )})}
                 </select>
-                <h2>Sub-area</h2>
+                <h3>Sub-area</h3>
                 <select defaultValue='true' onChange={inf=>setsubarea(inf.target.value)}>
                         {subareas.map(subarea=>{return(
                             <option value={subarea.id_subarea}>{subarea.nombre_subarea}</option>
 
                         )})}
                 </select>
-                <h2>Tipo de Documento</h2>
+                <h3>Tipo de Documento</h3>
                 <input placeholder='Tipo de documento' type='text' onChange={inf=>settipo_documento(inf.target.value)}/>
-                <h2>Numero de documento</h2>
+                <h3>Numero de documento</h3>
                 <input placeholder='Numero de documento' type='text' onChange={inf=>setnum_documento(inf.target.value)}/>
-                <h2>Fecha de contratacion</h2>
+                <h3>Fecha de contratacion</h3>
                 <input placeholder='Titulo' type='date' onChange={inf=>setconstratacion(inf.target.value)}/>
                 <button onClick={Crear_registro}>Crear registro</button>
             </div>

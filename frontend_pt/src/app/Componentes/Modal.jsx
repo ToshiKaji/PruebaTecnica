@@ -84,6 +84,7 @@ const Modal = ({empleado_editar,estado,cambiarestado}) =>
        {estado &&
         <div className="overlay">
         <div className="back_modal">
+          
             <a onClick={()=> cambiarestado(!estado)} className="btn_cerrar">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
               <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
@@ -91,19 +92,20 @@ const Modal = ({empleado_editar,estado,cambiarestado}) =>
             </svg>
             </a>
             
+            
             <div className="formulario">
-                <h2>Nombre</h2>
+                <h3>Nombre</h3>
                 <input className="input" placeholder={empleado_editar.nombre} defaultValue={empleado_editar.nombre} onChange={txt=>setnombre(txt.target.value)} type="text"/>
-                <h2>Apellido</h2>
+                <h3>Apellido</h3>
                 <input className="input" placeholder={empleado_editar.apellido} defaultValue={empleado_editar.apellido} onChange={txt=>setapellido(txt.target.value)} type="text"/>
-                <h2>Pais</h2>
+                <h3>Pais</h3>
                 <select className="input" defaultValue={empleado_editar.pais} onChange={val => setpais(val.target.value)}>
                     {paises.map(pais=>{
                 return(    
                 <option value={pais.codigo}>{pais.nombre}</option>
                 )})}
                 </select>
-                <h2>Area</h2>
+                <h3>Area</h3>
                 <select className="input" defaultValue={empleado_editar.area} onChange={val => setarea(val.target.value)}>
                     
                     {areas.map(area=>{
@@ -111,14 +113,14 @@ const Modal = ({empleado_editar,estado,cambiarestado}) =>
                 <option value={area.id_area}>{area.nombre_area}</option>
                 )})}
                 </select> 
-                <h2>Sub-area</h2>
+                <h3>Sub-area</h3>
                 <select className="input" defaultValue={empleado_editar.subarea} onChange={val => setsubarea(val.target.value)}>
                     {subareas.map(subarea=>{
                 return(    
                 <option value={subarea.id_subarea}>{subarea.nombre_subarea}</option>
                 )})}
                 </select> 
-                <h2>Contratacion</h2>
+                <h3>Contratacion</h3>
                 <input className="input" defaultValue={empleado_editar.contratacion} onChange={res=>setconstratacion(res.target.value)} type='datetime-local'/>
 
                 <button onClick={()=>{Editar_empleado(),cambiarestado(!estado)}}>Enviar</button>
